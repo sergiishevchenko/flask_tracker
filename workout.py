@@ -4,7 +4,7 @@ from datetime import datetime
 import bcrypt
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'DontTellAnyone!'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:d_b'
 
 
 @app.before_request
@@ -66,7 +66,7 @@ def add_workout():
 
         exercise_count = int(request.form['exercise_count'])
 
-        for exercise_num in range(1,exercise_count + 1):
+        for exercise_num in range(1, exercise_count + 1):
             exercise = Exercise(order=exercise_num, exercise_id=request.form['exercise'+str(exercise_num)], workout=workout)
 
             weights = request.form.getlist('weight' + str(exercise_num))
