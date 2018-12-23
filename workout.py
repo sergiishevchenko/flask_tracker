@@ -54,7 +54,6 @@ def register():
             session['username'] = pending_user
             return redirect(url_for('index'))
 
-
     return render_template('register.html')
 
 
